@@ -1,0 +1,6 @@
+[device]
+port = "/dev/ttyACM0"
+baud = "921600"
+
+[firmware]
+path = "./firmwares/esp32c3-20220117-v1.18.bin"
