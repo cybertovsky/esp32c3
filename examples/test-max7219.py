@@ -1,8 +1,8 @@
-from machine import Pin, SPI
+from machine import Pin, SoftSPI
 from lib import max7219
 from time import sleep
-spi = SPI(1, baudrate=10000000)
-screen = max7219.Matrix8x8(spi, Pin(15), 1)
+spi = SoftSPI(baudrate=800000, polarity=1, phase=0, sck=Pin(2), mosi=Pin(3), miso=Pin(10))
+screen = max7219.Matrix8x8(spi, Pin(7), 4)
 
 screen.brightness(0)
 #screen.text('0',0,0,1)
@@ -13,7 +13,7 @@ class Sprite:
         self.x=x
         self.y=y
     def update(self):
-        if self.x < 7:
+        if self.x < 31:
             self.x=self.x+1
             
     def draw(self):
